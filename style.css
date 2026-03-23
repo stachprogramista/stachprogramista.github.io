@@ -1,6 +1,7 @@
 body{
     padding: 0;
     margin: 0;
+    background-color: #3E2F45;
 }
 nav ul{
     list-style: none;
@@ -9,8 +10,10 @@ nav ul{
     margin: 0;
 }
 nav li{
-    margin: 2rem 1em 2rem 1em;
+    padding: auto 1em auto 1em;
     float: left;
+    justify-content: center;
+    height: 3em;
 }
 nav li a{
     text-decoration: none;
@@ -21,7 +24,7 @@ nav li a:visited{
     color: red;
 }
 .current_page{
-    background-image: linear-gradient(#D50000, red, #D50000);
+    background-image: linear-gradient(#3E2F45, red, #3E2F45);
 }
 #nav_logo{
     height: 3em;
