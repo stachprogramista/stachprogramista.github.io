@@ -5,11 +5,23 @@ body{
 nav ul{
     list-style: none;
     text-decoration: none;
-}
-nav li{
     padding: 0;
     margin: 0;
+}
+nav li{
+    margin: 2rem 1em 2rem 1em;
     float: left;
+}
+nav li a{
+    text-decoration: none;
+    color: red;
+}
+nav li a:visited{
+    text-decoration: none;
+    color: red;
+}
+.current_page{
+    background-image: linear-gradient(#D50000, red, #D50000);
 }
 #nav_logo{
     height: 3em;
