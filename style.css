@@ -1,36 +1,76 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: #3E2F45;
+    background-color: #161218;
+    color: red;
 }
 nav{
-    height: 3em;
     background-color: #3E2F45;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3em repeat(5, 1fr);
+    column-gap: 2rem;
 }
-nav ul{
-    list-style: none;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-}
-nav li{
-    padding: auto 1em auto 1em;
-    float: left;
-    justify-content: center;
+nav div{
     height: 3em;
 }
-nav li a{
+.nav_link{
     text-decoration: none;
     color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    height: 3em;
+    width: 100%;
 }
-nav li a:visited{
-    text-decoration: none;
-    color: red;
-}
+
 .current_page{
-    background-image: linear-gradient(to right, #3E2F45, red, #3E2F45);
+    background-color: #161218;
+    clip-path: polygon(
+    1em 0,                /* top-left (indented) */
+    calc(100% - 1em) 0,  /* top-right (indented) */
+    100% 100%,           /* bottom-right */
+    0 100%               /* bottom-left */
+  );
+}
+.current_home_page{
+    background-color: #161218;
+    width: 4em;
+    clip-path: polygon(
+    0 0,                /* top-left */
+    calc(100% - 1em) 0,  /* top-right (indented) */
+    100% 100%,           /* bottom-right */
+    0 100%               /* bottom-left */
+  );
 }
 #nav_logo{
     height: 3em;
     width: 3em;
+}
+#home_page{
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+#home_page h1{
+    margin-block-end: 0;
+}
+#home_page h3{
+    margin-block-start: 0;
+}
+#personal_projects{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+#personal_projects h1{
+    grid-column: span 2;
+}
+main div{
+    padding: 1em;
+    background-color: #3E2F45;
 }
