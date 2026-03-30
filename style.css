@@ -2,7 +2,13 @@ body{
     padding: 0;
     margin: 0;
     background-color: #161218;
-    color: red;
+    color: rgb(175, 205, 233);
+    font-family: 'Techna Sans', sans-serif;
+    size: 1em;
+}
+.main_header{
+    color: rgb(237, 237, 233);
+    text-decoration: underline red;
 }
 nav{
     background-color: #3E2F45;
@@ -17,7 +23,7 @@ nav div{
 }
 .nav_link{
     text-decoration: none;
-    color: red;
+    color: rgb(237, 237, 233);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +40,10 @@ nav div{
     100% 100%,           /* bottom-right */
     0 100%               /* bottom-left */
   );
+}
+.current_page .nav_link{
+    color: rgb(237, 237, 233);
+    text-decoration: underline red;
 }
 .current_home_page{
     background-color: #161218;
@@ -61,15 +71,101 @@ nav div{
 #home_page h3{
     margin-block-start: 0;
 }
-#personal_projects{
+.external_link{
+    color: rgb(158, 195, 230);
+}
+.external_link:hover{
+    text-decoration: underline rgb(237, 237, 233);;
+}
+#contributions, #personal_projects{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
     padding: 1rem;
 }
-#personal_projects h1{
+#contributions, #personal_projects h1{
     grid-column: span 2;
 }
+#my_skills{
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+#my_skills div{
+    padding: 0.25rem;
+}
+#technology, #soft_skills{
+    grid-template-columns: 1fr 1fr;
+}
+#soft_skills li, #language_list li{
+    padding: 1rem 0 1rem 0;
+    text-align: center;
+}
+#my_skills ul{
+    background-color: #161218;
+    list-style: none;
+    display: grid;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+#my_skills #technology ul{
+    background-color: #3E2F45;
+    list-style: none;
+    display: grid;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+}
+#my_skills li{
+    color: rgb(237, 237, 233);
+}
+#my_skills li li {
+    background-color: #3E2F45;
+    padding-left: 1rem;
+    color: rgb(158, 195, 230);
+    
+}
+#contact_me{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+#contact_me div{
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+}
+#contact_me img{
+    width: 40%;
+}
+#telephone_link, #email_link{
+    color: rgba(0, 0, 0, 0);
+    line-height: 0;
+}
+@keyframes flow_down{
+    0%{
+        line-height: 0;
+        opacity: 0%;
+    }
+    50%{
+        line-height: 0.5em;
+        opacity: 50%;
+    }
+    100%{
+        line-height: 0.5em;
+        opacity: 100%;
+    }
+}
+#telephone_link:hover, #email_link:hover{
+    color: rgb(237, 237, 233);
+    animation-name: flow_down;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
 main div{
     padding: 1em;
     background-color: #3E2F45;
