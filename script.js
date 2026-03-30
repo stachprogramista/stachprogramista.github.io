@@ -64,6 +64,17 @@ function contributions_page_script() {
 loadContributions(username);
 
 }
+const nav = document.querySelector('nav');
+nav.addEventListener('click', function (e){
+  const documentWidth = window.innerWidth;
+  if (documentWidth <= 798){
+    if (!nav.classList.contains('open_nav')){
+      e.preventDefault();
+      nav.classList.toggle('open_nav');
+      
+    }
+  }
+})
 switch (page) {
     case 'personal_projects':
         personal_projects_page_script();
