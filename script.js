@@ -8,7 +8,6 @@ function personal_projects_page_script() {
     fetch(`https://api.github.com/users/${username}/repos`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             data.forEach(project => {
                 let projectHTML = `<div>
         <p>${project.name}</p>

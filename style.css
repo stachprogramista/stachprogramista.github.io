@@ -1,41 +1,146 @@
+/* CSS Variables */
+:root {
+    --bg-dark: #161218;
+    --bg-medium: #3E2F45;
+    --text-light: rgb(237, 237, 233);
+    --text-default: rgb(175, 205, 233);
+    --text-link: rgb(158, 195, 230);
+    --accent-color: red;
+    --size-base: 1em;
+    --size-nav: 3em;
+    --spacing-base: 1rem;
+    --spacing-small: 0.5rem;
+    --spacing-xs: 0.25rem;
+}
+
+/* Global Styles */
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-default);
+    font-family: 'Techna Sans', sans-serif;
+    font-size: var(--size-base);
+}
+
+.main_header {
+    color: var(--text-light);
+    text-decoration: underline var(--accent-color);
+}
+
+.home_text {
+    display: none;
+}
+
+#home_page h1 {
+    margin-block-end: 0;
+}
+
+#home_page h3 {
+    margin-block-start: 0;
+}
+
+.external_link {
+    text-decoration: none;
+    color: var(--text-link);
+}
+
+.external_link:hover {
+    text-decoration: underline var(--text-light);
+}
+
+#telephone_link,
+#email_link {
+    color: rgba(0, 0, 0, 0);
+    line-height: 0;
+}
+
+#telephone_link:hover,
+#email_link:hover {
+    color: var(--text-light);
+    animation-name: flow_down;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes flow_down {
+    0% {
+        line-height: 0;
+        opacity: 0%;
+    }
+    50% {
+        line-height: 0.5em;
+        opacity: 50%;
+    }
+    100% {
+        line-height: 0.5em;
+        opacity: 100%;
+    }
+}
+
+/* Skills Section */
+#my_skills ul {
+    list-style: none;
+    display: grid;
+    padding: var(--spacing-small);
+    gap: var(--spacing-small);
+}
+
+#my_skills li {
+    color: var(--text-light);
+}
+
+#my_skills li li {
+    padding-left: var(--spacing-base);
+    color: var(--text-link);
+}
+
+#my_skills #technology li {
+    background-color: var(--bg-dark);
+}
+
+#my_skills #technology h5 {
+    padding-left: var(--spacing-base);
+}
+
+#soft_skills,
+#language_list {
+    background-color: var(--bg-dark);
+}
+
+#technology {
+    background-color: var(--bg-medium);
+}
+
+#soft_skills li,
+#language_list li {
+    padding: var(--spacing-base) 0;
+    text-align: center;
+}
+
 /* mobile */
 @media only screen and (max-width: 768px) {
-    body {
-        padding: 0;
-        margin: 0;
-        background-color: #161218;
-        color: rgb(175, 205, 233);
-        font-family: 'Techna Sans', sans-serif;
-        size: 1em;
-    }
-
     main {
         position: absolute;
-        top: 3em;
+        top: var(--size-nav);
         width: calc(100% - 2rem);
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
-    }
-    .main_header {
-        color: rgb(237, 237, 233);
-        text-decoration: underline red;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
-    .home_text {
-        display: none;
-    }
     .open_nav .home_text {
         display: flex;
         text-decoration: none;
-        color: rgb(237, 237, 233);
+        color: var(--text-light);
         align-items: center;
         justify-content: left;
         font-size: 1.1em;
-        height: 3em;
-        float:left;
+        height: var(--size-nav);
+        float: left;
     }
+
     .open_nav {
         position: absolute;
         z-index: 2;
@@ -43,19 +148,12 @@
         height: 100vh;
         width: 80%;
         grid-template-columns: 1fr;
-        row-gap: 1rem;
-        background-color: #3E2F45;
-    }
-
-    nav:first {
-        line-height: 0;
-        height: 3em;
-        text-decoration: none;
-        color: rgb(237, 237, 233);
+        row-gap: var(--spacing-base);
+        background-color: var(--bg-medium);
     }
 
     .open_nav div {
-        height: 3em;
+        height: var(--size-nav);
     }
 
     .nav_link {
@@ -64,22 +162,20 @@
     }
 
     .open_nav .nav_link {
-        padding-left: 1em;
+        padding-left: var(--spacing-base);
         text-decoration: none;
-        color: rgb(237, 237, 233);
+        color: var(--text-light);
         display: flex;
         align-items: center;
         justify-content: left;
         font-size: 1.1em;
-        height: 3em;
+        height: var(--size-nav);
         width: 100%;
     }
 
-
     .open_nav .current_page .nav_link {
-        height: 3em;
-        color: rgb(237, 237, 233);
-        text-decoration: underline red;
+        color: var(--text-light);
+        text-decoration: underline var(--accent-color);
     }
 
     .current_page {
@@ -89,52 +185,27 @@
     .open_nav .current_home_page,
     .open_nav .current_page {
         display: block;
-        background-color: #161218;
-        width: calc(100% - 1em);
-        height: 3em;
-        clip-path: polygon(0 0,
-                /* top-left */
-                calc(100% - 1em) 0,
-                /* top-right (indented) */
-                100% 100%,
-                /* bottom-right */
-                0 100%
-                /* bottom-left */
-            );
+        background-color: var(--bg-dark);
+        width: calc(100% - var(--spacing-base));
+        height: var(--size-nav);
+        clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 100%, 0 100%);
     }
 
     #nav_logo {
-        float:left;
-        height: 3em;
-        width: 3em;
+        float: left;
+        height: var(--size-nav);
+        width: var(--size-nav);
     }
 
     #home_page {
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
-    }
-
-    #home_page h1 {
-        margin-block-end: 0;
-    }
-
-    #home_page h3 {
-        margin-block-start: 0;
-    }
-
-    .external_link {
-        color: rgb(158, 195, 230);
-        text-decoration: underline rgb(237, 237, 233);
-    }
-
-    .external_link:hover {
-        text-decoration: underline rgb(237, 237, 233);
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
     #my_skills div {
-        padding: 0.25rem;
+        padding: var(--spacing-xs);
     }
 
     #technology,
@@ -142,49 +213,24 @@
         grid-template-columns: 1fr;
     }
 
-    #soft_skills li,
-    #language_list li {
-        padding: 1rem 0 1rem 0;
-        text-align: center;
-    }
-
-    #my_skills ul {
-        background-color: #161218;
-        list-style: none;
-        display: grid;
-        padding: 0.5rem;
-        gap: 0.5rem;
-    }
-
     #my_skills #technology ul {
-        background-color: #3E2F45;
+        background-color: inherit;
         list-style: none;
         display: grid;
-        padding: 0.5rem;
-        gap: 0.5rem;
+        padding: var(--spacing-small);
+        gap: var(--spacing-small);
         grid-template-columns: 1fr;
-    }
-
-    #my_skills li {
-        color: rgb(237, 237, 233);
-    }
-
-    #my_skills li li {
-        background-color: #3E2F45;
-        padding-left: 1rem;
-        color: rgb(158, 195, 230);
-
     }
 
     #contact_me {
         display: grid;
         grid-template-columns: 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
     #contact_me div {
-        padding: 0.5rem;
+        padding: var(--spacing-small);
         display: grid;
         grid-template-columns: 1fr;
         justify-content: space-between;
@@ -194,156 +240,73 @@
         width: 100%;
     }
 
-    #telephone_link,
-    #email_link {
-        color: rgba(0, 0, 0, 0);
-        line-height: 0;
-    }
-
-    @keyframes flow_down {
-        0% {
-            line-height: 0;
-            opacity: 0%;
-        }
-
-        50% {
-            line-height: 0.5em;
-            opacity: 50%;
-        }
-
-        100% {
-            line-height: 0.5em;
-            opacity: 100%;
-        }
-    }
-
-    #telephone_link:hover,
-    #email_link:hover {
-        color: rgb(237, 237, 233);
-        animation-name: flow_down;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-    }
-
     main div {
-        padding: 1em;
-        background-color: #3E2F45;
+        padding: var(--spacing-base);
+        background-color: var(--bg-medium);
     }
 }
 
 @media only screen and (min-width: 768px) {
-    body {
-        padding: 0;
-        margin: 0;
-        background-color: #161218;
-        color: rgb(175, 205, 233);
-        font-family: 'Techna Sans', sans-serif;
-        size: 1em;
-    }
-
-    .main_header {
-        color: rgb(237, 237, 233);
-        text-decoration: underline red;
-    }
-
-    .home_text {
-        display: none;
-    }
-
     nav {
-        background-color: #3E2F45;
+        background-color: var(--bg-medium);
         height: auto;
         width: 100%;
         display: grid;
-        grid-template-columns: 3em repeat(5, 1fr);
+        grid-template-columns: var(--size-nav) repeat(5, 1fr);
         column-gap: 2rem;
     }
 
     nav div {
-        height: 3em;
+        height: var(--size-nav);
     }
 
     .nav_link {
         text-decoration: none;
-        color: rgb(237, 237, 233);
+        color: var(--text-light);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.1em;
-        height: 3em;
+        height: var(--size-nav);
         width: 100%;
     }
 
     .current_page {
-        background-color: #161218;
-        clip-path: polygon(1em 0,
-                /* top-left (indented) */
-                calc(100% - 1em) 0,
-                /* top-right (indented) */
-                100% 100%,
-                /* bottom-right */
-                0 100%
-                /* bottom-left */
-            );
+        background-color: var(--bg-dark);
+        clip-path: polygon(1em 0, calc(100% - 1em) 0, 100% 100%, 0 100%);
     }
 
     .current_page .nav_link {
-        color: rgb(237, 237, 233);
-        text-decoration: underline red;
+        text-decoration: underline var(--accent-color);
     }
 
     .current_home_page {
-        background-color: #161218;
+        background-color: var(--bg-dark);
         width: 4em;
-        clip-path: polygon(0 0,
-                /* top-left */
-                calc(100% - 1em) 0,
-                /* top-right (indented) */
-                100% 100%,
-                /* bottom-right */
-                0 100%
-                /* bottom-left */
-            );
+        clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 100%, 0 100%);
     }
 
     #nav_logo {
-        height: 3em;
-        width: 3em;
+        height: var(--size-nav);
+        width: var(--size-nav);
     }
 
     #home_page {
         display: grid;
         grid-template-columns: 2fr 3fr 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
-    }
-
-    #home_page h1 {
-        margin-block-end: 0;
-    }
-
-    #home_page h3 {
-        margin-block-start: 0;
-    }
-
-    .external_link {
-        color: rgb(158, 195, 230);
-    }
-
-    .external_link:hover {
-        text-decoration: underline rgb(237, 237, 233);
-        ;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
     #contributions,
     #personal_projects {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
-    #contributions,
+    #contributions h1,
     #personal_projects h1 {
         grid-column: span 2;
     }
@@ -351,12 +314,12 @@
     #my_skills {
         display: grid;
         grid-template-columns: 2fr 2fr 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
     #my_skills div {
-        padding: 0.25rem;
+        padding: var(--spacing-xs);
     }
 
     #technology,
@@ -364,49 +327,27 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    #soft_skills li,
-    #language_list li {
-        padding: 1rem 0 1rem 0;
-        text-align: center;
-    }
-
-    #my_skills ul {
-        background-color: #161218;
-        list-style: none;
-        display: grid;
-        padding: 0.5rem;
-        gap: 0.5rem;
-    }
-
     #my_skills #technology ul {
-        background-color: #3E2F45;
         list-style: none;
         display: grid;
-        padding: 0.5rem;
-        gap: 0.5rem;
+        padding: var(--spacing-small);
+        gap: var(--spacing-small);
         grid-template-columns: 1fr;
     }
 
-    #my_skills li {
-        color: rgb(237, 237, 233);
-    }
-
-    #my_skills li li {
-        background-color: #3E2F45;
-        padding-left: 1rem;
-        color: rgb(158, 195, 230);
-
+    #my_skills #technology {
+        background-color: inherit;
     }
 
     #contact_me {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-        grid-gap: 1rem;
-        padding: 1rem;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
     }
 
     #contact_me div {
-        padding: 0.5rem;
+        padding: var(--spacing-small);
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-content: space-between;
@@ -418,11 +359,11 @@
 
     #telephone_link,
     #email_link {
-        color: rgb(237, 237, 233);
+        color: var(--text-light);
     }
 
     main div {
-        padding: 1em;
-        background-color: #3E2F45;
+        padding: var(--spacing-base);
+        background-color: var(--bg-medium);
     }
 }
