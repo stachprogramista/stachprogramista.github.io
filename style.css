@@ -55,23 +55,17 @@ body {
     line-height: 0;
 }
 
-#telephone_link:hover,
-#email_link:hover {
-    color: var(--text-light);
-    animation-name: flow_down;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-}
-
 @keyframes flow_down {
     0% {
         line-height: 0;
         opacity: 0%;
     }
+
     50% {
         line-height: 0.5em;
         opacity: 50%;
     }
+
     100% {
         line-height: 0.5em;
         opacity: 100%;
@@ -116,6 +110,38 @@ body {
 #language_list li {
     padding: var(--spacing-base) 0;
     text-align: center;
+}
+
+.project-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.languages-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.main-lang {
+    width: 5em;
+    height: 5em;
+    object-fit: cover;
+}
+
+.secondary-langs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sub-lang {
+    width: 2.5em;
+    height: 2.5em;
+    object-fit: cover;
 }
 
 /* mobile */
@@ -244,6 +270,11 @@ body {
         padding: var(--spacing-base);
         background-color: var(--bg-medium);
     }
+
+    #telephone_link,
+    #email_link {
+        color: var(--text-light);
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -357,9 +388,12 @@ body {
         width: 40%;
     }
 
-    #telephone_link,
-    #email_link {
+    #telephone_link:hover,
+    #email_link:hover {
         color: var(--text-light);
+        animation-name: flow_down;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
     }
 
     main div {
