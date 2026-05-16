@@ -94,7 +94,11 @@ async function personal_projects_page_script() {
         main.innerHTML += projectHTML;
     }
 }
-
+function parseCotributionLink(apiLink){
+    let resault=apiLink.replace('//api.', '//').replace('/repos', '')
+    console.log(resault)
+    return resault
+}
 async function contributions_page_script() {
     async function getPublicContributions(username) {
         const repos = [];
@@ -129,7 +133,7 @@ async function contributions_page_script() {
                     <div class="project-card">
                         ${langHTML}
                         <div>
-                    <h3><a href="${project.html_url}" target="_blank" class="external_link">${project.name}</a></h3>
+                    <h3><a href="${parseCotributionLink(project.url)}" target="_blank" class="external_link">${project.name}</a></h3>
                     <p>${project.description || ''}</p>
                 </div>
                     </div>`;
