@@ -96,7 +96,6 @@ async function personal_projects_page_script() {
 }
 
 async function contributions_page_script() {
-    if (isRateLimitReached(response)) return;
     async function getPublicContributions(username) {
         const repos = [];
         let page = 1;
@@ -118,7 +117,7 @@ async function contributions_page_script() {
         }
         return repos;
     }
-
+    //if (isRateLimitReached(response)) return;
     try {
         const contributions = await getPublicContributions(username);
         if (contributions.length === 0) {
