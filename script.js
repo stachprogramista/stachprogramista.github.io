@@ -1,7 +1,41 @@
 const page = document.head.querySelector('meta[name~="page"]').content
 console.log(page)
 const username = 'stachprogramista'
+const main = document.querySelector('main');
+function isRateLimitReached(response) {
+  const limit      = response.headers.get('X-RateLimit-Limit');
+  const remaining  = response.headers.get('X-RateLimit-Remaining');
+  const reset      = response.headers.get('X-RateLimit-Reset');
 
+  const status = response.status;
+  let data;
+
+  try {
+    data = JSON.parse(text);
+  } catch (e) {
+    data = {};
+  }
+  const message = data?.message || '';
+
+  const isOverloaded =
+    status === 403 ||
+    status === 429 ||
+    (limit && remaining && Number(remaining) <= 0) ||
+    message.includes('rate limit');
+
+  if (isOverloaded) {
+    main.innerHTML +=
+      `<div class="api-limit-warning">
+        <p>GitHub API is rate‑limited.</p>
+        ${reset
+          ? `<small>Try again after ${new Date(reset * 1000).toLocaleTimeString()}.</small>`
+          : ''}
+      </div>`;
+  }
+
+  return isOverloaded;
+}
+// Pomocnicza funkcja do pobierania Top 3 języków i generowania HTML
 async function getLanguagesHTML(languagesUrl) {
     try {
         const res = await fetch(languagesUrl);
@@ -43,11 +77,10 @@ async function getLanguagesHTML(languagesUrl) {
     }
 }
 async function personal_projects_page_script() {
-    const main = document.querySelector('main');
-
+  
     const response = await fetch(`https://api.github.com/users/${username}/repos`);
+    if (isRateLimitReached(response)) return;
     const repos = await response.json();
-
     for (const project of repos) {
         const langHTML = await getLanguagesHTML(project.languages_url);
         const projectHTML = `
@@ -63,8 +96,7 @@ async function personal_projects_page_script() {
 }
 
 async function contributions_page_script() {
-    const main = document.querySelector('main');
-
+    if (isRateLimitReached(response)) return;
     async function getPublicContributions(username) {
         const repos = [];
         let page = 1;
@@ -112,12 +144,17 @@ async function contributions_page_script() {
 const nav = document.querySelector('nav');
 nav.addEventListener('click', function (e){
   const documentWidth = window.innerWidth;
-  if (documentWidth <= 798){
+  if (documentWidth <= 767){
     if (!nav.classList.contains('open_nav')){
       e.preventDefault();
       nav.classList.toggle('open_nav');
     }
   }
+  
+})
+window.addEventListener('DOMContentLoaded', function (e){
+  console.log(window.innerWidth)
+  window.dispatchEvent(new Event('resize'));
 })
 switch (page) {
     case 'personal_projects':

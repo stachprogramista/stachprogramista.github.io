@@ -144,8 +144,13 @@ body {
     object-fit: cover;
 }
 
+#contact_me div a {
+    display: block;
+    text-align: center;
+}
+
 /* mobile */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     main {
         position: absolute;
         top: var(--size-nav);
@@ -385,7 +390,7 @@ body {
     }
 
     #contact_me img {
-        width: 40%;
+        width: 100%;
     }
 
     #telephone_link:hover,
