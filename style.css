@@ -263,7 +263,7 @@ li{
     }
 
     #my_skills #technology ul {
-        background-color: inherit;
+        background-color: transparent;
         list-style: none;
         display: grid;
         padding: var(--spacing-small);
