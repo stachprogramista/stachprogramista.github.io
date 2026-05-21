@@ -55,6 +55,13 @@ body {
     line-height: 0;
 }
 
+li{
+    border: solid 1px transparent;
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+}
+
 @keyframes flow_down {
     0% {
         line-height: 0;
@@ -88,9 +95,13 @@ body {
     padding-left: var(--spacing-base);
     color: var(--text-link);
 }
-
+#my_skills .main_header{
+    padding-left: 2em;
+}
 #my_skills #technology li {
     background-color: var(--bg-dark);
+    corner-shape: bevel;
+    border-radius: 1em;
 }
 
 #my_skills #technology h5 {
@@ -99,7 +110,8 @@ body {
 
 #soft_skills,
 #language_list {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-medium);
+    gap:var(--spacing-base)
 }
 
 #technology {
@@ -108,16 +120,11 @@ body {
 
 #soft_skills li,
 #language_list li {
+    background-color: var(--bg-dark);
     padding: var(--spacing-base) 0;
     text-align: center;
-}
-
-.project-card {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
+    border-radius: 1em;
+    corner-shape: bevel;
 }
 
 .languages-container {
@@ -159,6 +166,7 @@ body {
         grid-template-columns: 1fr;
         gap: var(--spacing-base);
         padding: var(--spacing-base);
+        height: calc(100vh - var(--size-nav) - 3em);
     }
 
     .open_nav .home_text {
@@ -234,12 +242,22 @@ body {
         gap: var(--spacing-base);
         padding: var(--spacing-base);
     }
+    #contributions,
+    #personal_projects {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3em;
+        grid-auto-rows:auto;
+        gap: var(--spacing-base);
+        padding: var(--spacing-base);
 
+    }
     #my_skills div {
         padding: var(--spacing-xs);
     }
-
-    #technology,
+    #technology{
+        grid-template-columns: 1fr 1fr;
+    }
     #soft_skills {
         grid-template-columns: 1fr;
     }
@@ -280,6 +298,13 @@ body {
     #email_link {
         color: var(--text-light);
     }
+    .project-card {
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
 }
 
 @media only screen and (min-width: 768px) {
@@ -309,7 +334,9 @@ body {
 
     .current_page {
         background-color: var(--bg-dark);
-        clip-path: polygon(1em 0, calc(100% - 1em) 0, 100% 100%, 0 100%);
+        corner-top-shape: bevel;
+        border-radius: 1em 1em 0 0 / 3em 3em 0 0;
+        /* clip-path: polygon(1em 0, calc(100% - 1em) 0, 100% 100%, 0 100%); */
     }
 
     .current_page .nav_link {
@@ -319,7 +346,8 @@ body {
     .current_home_page {
         background-color: var(--bg-dark);
         width: 4em;
-        clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 100%, 0 100%);
+        corner-top-shape: bevel;
+        border-radius:  0 1em 0 0 / 0 3em 0 0;
     }
 
     #nav_logo {
@@ -329,7 +357,7 @@ body {
 
     #home_page {
         display: grid;
-        grid-template-columns: 2fr 3fr 1fr;
+        grid-template-columns: 2fr 3fr 2fr;
         gap: var(--spacing-base);
         padding: var(--spacing-base);
     }
@@ -338,12 +366,18 @@ body {
     #personal_projects {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3em;
+        grid-auto-rows: 12em;
         gap: var(--spacing-base);
         padding: var(--spacing-base);
+        overflow-y: scroll;
+        scrollbar-color: var(--bg-dark) var(--bg-medium);
+        scrollbar-width: thin;
+
     }
 
     #contributions h1,
-    #personal_projects h1 {
+    #personal_projects h1{
         grid-column: span 2;
     }
 
@@ -357,7 +391,25 @@ body {
     #my_skills div {
         padding: var(--spacing-xs);
     }
+    body{
+        overflow-y: hidden;
+    }
+    main {
+        min-height: calc(100vh - var(--size-nav));
+        
+    }
 
+    main > div {
+        max-height: calc(100vh - var(--size-nav) - 2rem);
+        overflow-y: hidden;
+    }
+
+    #technology {
+        overflow-y: auto;
+        scrollbar-color: var(--bg-dark) var(--bg-medium);
+        scrollbar-width: thin;
+        height: calc(100% - 2 * var(--spacing-base) - 3.17em); /*base - 2x padding - h1 height*/
+    }
     #technology,
     #soft_skills {
         grid-template-columns: 1fr 1fr;
@@ -385,14 +437,20 @@ body {
     #contact_me div {
         padding: var(--spacing-small);
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 50% 50%;
         justify-content: space-between;
+        max-height: calc(100vh - 5em);
     }
 
     #contact_me img {
-        width: 100%;
+        max-width: 100%;
     }
-
+    #contact_me div span {
+        padding: var(--spacing-small);
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        justify-content: space-between;
+    }
     #telephone_link:hover,
     #email_link:hover {
         color: var(--text-light);
@@ -404,5 +462,17 @@ body {
     main div {
         padding: var(--spacing-base);
         background-color: var(--bg-medium);
+        corner-top-right-shape: bevel;
+        border-top-right-radius: 2em;
+    }
+    .project-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    }
+    .list_hover li:hover {
+        border: solid var(--text-light) 1px;
     }
 }

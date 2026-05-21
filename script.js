@@ -150,7 +150,7 @@ nav.addEventListener('click', function (e){
   if (documentWidth <= 767){
     if (!nav.classList.contains('open_nav')){
       e.preventDefault();
-      nav.classList.toggle('open_nav');
+      nav.classList.add('open_nav');
     }
   }
   
