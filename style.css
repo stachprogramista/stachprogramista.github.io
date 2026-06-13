@@ -55,11 +55,9 @@ body {
     line-height: 0;
 }
 
-li{
-    border: solid 1px transparent;
-    box-sizing: border-box;         /* Opera/IE 8+ */
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+li {
+    border: 1px solid transparent;
+    box-sizing: border-box;
 }
 
 @keyframes flow_down {
@@ -98,6 +96,18 @@ li{
 #my_skills .main_header{
     padding-left: 2em;
 }
+
+#my_skills > div:first-child {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: var(--spacing-base);
+    height: 100%;
+}
+
+#my_skills > div:first-child ul {
+    overflow-y: auto;
+}
+
 #my_skills #technology li {
     background-color: var(--bg-dark);
     corner-shape: bevel;
@@ -111,7 +121,9 @@ li{
 #soft_skills,
 #language_list {
     background-color: var(--bg-medium);
-    gap:var(--spacing-base)
+    display: grid;
+    gap: var(--spacing-small);
+    padding: var(--spacing-small);
 }
 
 #technology {
@@ -334,9 +346,8 @@ li{
 
     .current_page {
         background-color: var(--bg-dark);
-        corner-top-shape: bevel;
         border-radius: 1em 1em 0 0 / 3em 3em 0 0;
-        /* clip-path: polygon(1em 0, calc(100% - 1em) 0, 100% 100%, 0 100%); */
+        corner-shape: bevel;
     }
 
     .current_page .nav_link {
@@ -346,8 +357,8 @@ li{
     .current_home_page {
         background-color: var(--bg-dark);
         width: 4em;
-        corner-top-shape: bevel;
         border-radius:  0 1em 0 0 / 0 3em 0 0;
+        corner-shape: bevel;
     }
 
     #nav_logo {
@@ -410,9 +421,32 @@ li{
         scrollbar-width: thin;
         height: calc(100% - 2 * var(--spacing-base) - 3.17em); /*base - 2x padding - h1 height*/
     }
-    #technology,
-    #soft_skills {
+
+    #soft_skills,
+    #language_list {
+        overflow-y: auto;
+        scrollbar-color: var(--bg-dark) var(--bg-medium);
+        scrollbar-width: thin;
+    }
+
+    #soft_skills::-webkit-scrollbar,
+    #language_list::-webkit-scrollbar,
+    #technology::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    #soft_skills::-webkit-scrollbar-thumb,
+    #language_list::-webkit-scrollbar-thumb,
+    #technology::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: 999px;
+    }
+
+    #technology{
         grid-template-columns: 1fr 1fr;
+    }
+    #soft_skills {
+        grid-template-columns: 1fr;
     }
 
     #my_skills #technology ul {
